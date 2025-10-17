@@ -71,6 +71,8 @@
 \newlength{\fullcollw}
 \setlength{\fullcollw}{0.47\textwidth}
 
+% \usepackage{savetrees}
+
 %custom \section
 \usepackage{titlesec}				
 \usepackage{multicol}
@@ -122,6 +124,26 @@
     }
 
 
+% \usepackage[style=authoryear,sorting=ydnt,maxbibnames=99]{biblatex}
+
+% --- Formatting tweaks ---
+\renewcommand*{\bibfont}{\small}          % make everything smaller
+\setlength\bibitemsep{0.3\baselineskip}   % vertical spacing
+\setlength\bibhang{1em}                   % hanging indent
+\DeclareFieldFormat[article,inproceedings,thesis,poster]{title}{\small\textbf{#1}} % smaller bold titles
+
+\defbibheading{subbibliography}{%
+  \vspace{0.6em}% space before
+  {\small\textbf{\underline{#1}}}\par\nobreak\vspace{0.3em}%
+}
+
+
+% --- Remove your name from author list ---
+\AtEveryBibitem{\clearname{author}}
+
+% --- Optional: remove "In:" prefix, URLs, etc ---
+\renewbibmacro{in:}{}                     % removes "In:" before journal/conference
+\AtEveryBibitem{\clearfield{url}\clearfield{doi}\clearfield{isbn}}
 
 %----------------------------------------------------------------------------------------
 %	BEGIN DOCUMENT
@@ -142,12 +164,12 @@
 % \end{tabularx}
 
 \begin{tabularx}{\linewidth}{@{} C @{}}
-\Huge{Ian F.V.G. Hunter} \\[7.5pt]
-\href{https://github.com/username}{\raisebox{-0.05\height}\faGithub\ username} \ $|$ \ 
-\href{https://linkedin.com/in/username}{\raisebox{-0.05\height}\faLinkedin\ username} \ $|$ \ 
-\href{https://mysite.com}{\raisebox{-0.05\height}\faGlobe \ mysite.com} \ $|$ \ 
-\href{mailto:email@mysite.com}{\raisebox{-0.05\height}\faEnvelope \ email@mysite.com} \ $|$ \ 
-\href{tel:+000000000000}{\raisebox{-0.05\height}\faMobile \ +00.00.000.000} \\
+\Huge{Ian F.V.G. Hunter (Ireland, EMEA)} \\[7.5pt]
+\href{https://github.com/ianfhunter}{\raisebox{-0.05\height}\faGithub\ ianfhunter} \ $|$ \ 
+\href{https://linkedin.com/in/ianfhunter}{\raisebox{-0.05\height}\faLinkedin\ ianfhunter} \ $|$ \ 
+\href{https://ianhunter.ie}{\raisebox{-0.05\height}\faGlobe \ ianhunter.ie} \ $|$ \ 
+\href{mailto:ianfhunter@gmail.com}{\raisebox{-0.05\height}\faEnvelope \ ianfhunter@gmail.com} \ $|$ \ 
+\href{tel:+000000000000}{\raisebox{-0.05\height}\faMobile \ On Request Only} \\
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
@@ -156,27 +178,89 @@
 
 %Interests/ Keywords/ Summary
 \section{Summary}
-This CV can also be automatically complied and published using GitHub Actions. For details, \href{https://github.com/jitinnair1/autoCV}{click here}.
+With over 10 years of experience, mostly in optimizing the performance of next-generation AI chips, with broad secondary skills, and history in both technical and management roles, I am able to apply myself effectively to most positions. I am only open to \textbf{fully remote} options due to my residence (though I am open to periodic office visits and/or international travel). I have been working fully remotely with both local and global teams since 2019. I am particularly interested in roles which involve research/prototyping work and facilitate publication / conference attendance.
 
 %Experience
 \section{Work Experience}
 
-\begin{jobshort}{Designation}{Jan 2021 - present}
-long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width
+\begin{jobshort}{AMD (Advanced Micro Devices) --- SMTS [NPU Architecture, Shift Left]}{2024 - Present}
+My work at AMD focussed on validating and optimizing performance of our next generation AI chips at the presilicon stage, enabling greater confidence in performance projections, providing early feedback to many teams including the compiler, hardware and production-grade software groups. (XDNA1 through 3), 
+
+
+\begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt]
+    \item Prototyping of full network inferences on hardware simulation/emulators/physical devices.
+    \item Upgraded manual processes with more scalable \& performant solutions 
+    \begin{itemize}
+        \item Memory/Stream Allocators, Graph abstractions, Code generation
+        \item Early error detection, Interoperability with other team's data
+        \item Visualization tool for Memory lifetime analysis, stream allocations
+    \end{itemize}
+    \item Assisted other teams for critical deadlines with performance as a deliverable
+    \item Achieved industry-leading performance on UL Procyon AI Computer Vision Benchmark.
+    \item Technologies: C++, Python, Git, Jenkins, Make, GTKWave, PULP, Numpy
+\end{itemize}
+
 \end{jobshort}
 
+\begin{jobshort}{Intel/Movidius --- Various Titles [Presilicon Power \& Performance]}{2015-2024}
 
-\begin{joblong}{Designation}{Mar 2019 - Jan 2021}
-\item long long line of blah blah that will wrap when the table fills the column width
-\item again, long long line of blah blah that will wrap when the table fills the column width but this time even more long long line of blah blah. again, long long line of blah blah that will wrap when the table fills the column width but this time even more long long line of blah blah
-\end{joblong}
+\vspace{-15pt}
+\begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt]
+    \item[--] Deep Learning Engineering Manager [Intel] (2021-2023)
+    \item[--] Senior Deep Learning Engineer [Intel] (2020-2021)
+    \item[--] Deep Learning Engineer [Intel] (2016-2020)
+    \item[--] Embedded Vision Engineer [Movidius] (2015-2016)
+\end{itemize}
+
+I created the first Neural Network compiler for Movidius's range of embedded processors (‘VPUs’/NPUs) in 2015. This became the prime focus of Movidius - we unveiled the Fathom Neural Compute Stick at NIPS and were acquired by Intel the next year to be their NPU offering.
+
+Since then, I improved the compiler and corresponding embedded runtime over several VPU generations - all descendants of that once-prototype. I managed a team of 4-8 employees all dedicated to maximizing the chips' performance during the pre-silicon stage.
+
+% \begin{itemize}
+\begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt]
+    \item Demonstrating performance capabilities of future NPUs for various KPI Networks
+    % \item Multi-Domain development
+    \item Host-side development of a Python-based AI Compiler
+    \begin{itemize}
+        \item Network graph algorithmics using NetworkX, Numpy and other libraries (Dijkstra's Algorithm, Partitioned Boolean Quadratic Programming, etc)
+        \item Interfacing with various AI frameworks such as ONNX, TensorFlow, Caffe, PyTorch.
+        \item Cutting-Edge features such as INT4 and other sub-byte type support.
+    \end{itemize}
+    \item C++ Device Applications
+    \begin{itemize}
+        \item HW Drivers \& Libraries (e.g. Matrix Multiplication)
+        \item Runtime Control for AI VLIW Processors \& Hardware Units.
+    \end{itemize}
+    \item Web-based Dev Tooling 
+    \begin{itemize}
+        \item Data Collection / Training System for NN-Based Cost Model (See Publication)
+        \item Visualization of Tensors + Device Workloads
+    \end{itemize}
+    \item Robust Test \& Continuous Integration (Jenkins)
+    \item Management
+    \begin{itemize}
+        \item Coaching, Guidance, Hiring \& Firing, Raises/Promotions, Technical Roadmapping, Charter Definition, Cross-Team Collaboration, JIRA Kanban/Scrum
+    \end{itemize}
+    \item Also: Linux, Power Measurement, Direct customer interaction, Technical assistance/Coaching, Priority support, Conference Attendance / Booth hosting, Paper Publication \& Patents as below.
+\end{itemize}
+\end{jobshort}
+
+\begin{jobshort}{Wonga (DevOps, Build Systems, Legacy Software)}{2014-2015}
+\end{jobshort}
+\begin{jobshort}{FullStack (Web, Android)}{2013}
+\end{jobshort}
+\begin{jobshort}{GetBulb (Web, Data Visualization)}{2012}
+Winners of Irish Times Digital Innovation Award
+\end{jobshort}
   
 %Projects
 \section{Projects}
 
 \begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{Some Project} & \hfill \href{https://some-link.com}{Link to Demo} \\[3.75pt]
-\multicolumn{2}{@{}X@{}}{long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width}  \\
+\textbf{GNOLL} & \hfill \href{https://github.com/ianfhunter/GNOLL}{Link to Repository} \\[3.75pt]
+\multicolumn{2}{@{}X@{}}{
+Some of my hobbies are boardgames and tabletop role-playing games. Both of these often use a syntax for describing dice rolls which is non-trivial, widely used and totally organically defined. As there were little-to-no topics on the matter, I took it upon myself to analyse hundreds of rpg systems, concretely define a grammar and publish a easily installed library for anyone to use. My work has been published in the Journal of Open Source Software. (C, Yacc/Lex, Bison/Flex, FFIs to 14 other programming languages) 
+}  \\
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
@@ -184,31 +268,36 @@ long long line of blah blah that will wrap when the table fills the column width
 %----------------------------------------------------------------------------------------
 \section{Education}
 \begin{tabularx}{\linewidth}{@{}l X@{}}	
-2030 - present & PhD (Subject) at \textbf{University} \hfill \normalsize (GPA: 4.0/4.0) \\
+2017 - 2019 & M.S.(Research) Computer Science at \textbf{Trinity College Dublin} \hfill \normalsize (Grade: N/A (PASS)) \\
 
-2023 - 2027 & Bachelor's Degree at \textbf{College} \hfill (GPA: 4.0/4.0) \\ 
-
-2022 & Class 12th Some Board \hfill  (Grades) \\
-
-2021 & Class 10th Some Board \hfill  (Grades) \\
+2010 - 2014 & B.A.(Mod) Computer Science at \textbf{Trinity College Dublin} \hfill \normalsize (Grade: I (GPA 4.0 Equivalent)) \\
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
 %	PUBLICATIONS
 %----------------------------------------------------------------------------------------
-\section{Publications}
+\section{Patents \& Publications}
+
 \begin{refsection}[citations.bib]
 \nocite{*}
-\printbibliography[heading=none]
+\printbibliography[type=patent, title={Patents}, heading=subbibliography]
+\printbibliography[type=article, title={Journal Papers}, heading=subbibliography]
+\printbibliography[type=inproceedings ,title={Conference Papers}, heading=subbibliography]
+\printbibliography[type=misc, title={Posters and Demos}, heading=subbibliography]
+\printbibliography[type=thesis, title={Theses}, heading=subbibliography]
 \end{refsection}
+
+
 
 %----------------------------------------------------------------------------------------
 %	SKILLS
 %----------------------------------------------------------------------------------------
 \section{Skills}
 \begin{tabularx}{\linewidth}{@{}l X@{}}
-Some Skills &  \normalsize{This, That, Some of this and that etc.}\\
-Some More Skills  &  \normalsize{Also some more of this, Some more that, And some of this and that etc.}\\  
+Programming Languages &  \normalsize{C++, Python, Make, Bash, Javascript, TCL, Cmake}\\
+Libraries \& Frameworks &  \normalsize{Numpy, NetworkX, Pandas, Docker-Compose, Jenkins, Gerrit, Caffe, Tensorflow, ONNX, PyTorch}\\
+Working Methodologies \ Management &  \normalsize{Scrum, Performance Management, OKRs}\\
+Technologies  &  \normalsize{Neural Networks, Artificial Intelligence, Inference, Quantization, Optimization, Refactoring Legacy Software, Git, Jenkins, VLIW Processors, Parallelism, Linux, Embedded Systems}\\  
 \end{tabularx}
 
 \vfill
